@@ -1,0 +1,5 @@
+mysql_host: '192.168.0.42'
+mysql_user: 'hakim'
+# Enter your password in field below
+mysql_password: 'sap123ok'
+mysql_db: 'trs'

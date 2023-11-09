@@ -1,0 +1,27 @@
+{% extends "navbar.html" %}
+{% block content %}
+        
+<div class="container my-5">
+  <form method="POST" action="/updateAkun">
+    {% for data in dataAkun %}
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Username</label>
+        <input type="text" class="form-control" name="eUsername" value="{{data[2]}}">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Password</label>
+        <input type="text" class="form-control" name="ePassword" value="">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Email</label>
+        <input type="email" class="form-control" name="eEmail" value="{{data[4]}}">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">AkunId</label>
+        <input type="text" class="form-control" name="eAkunId" value="{{data[0]}}">
+      </div>
+      <button class="btn btn-primary" type="submit">Update</button>
+    {% endfor %}
+  </form>
+</div>
+{% endblock %}

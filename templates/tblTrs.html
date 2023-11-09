@@ -1,0 +1,60 @@
+{% extends "navbar.html" %}
+{% block content %}
+
+	<div class="container my-5">
+		<h5>TRANSAKSI</h5>
+		
+	</div>
+	<div class="container my-5">
+		<table class="table table-bordered border-primary">
+		  <thead>
+		    <tr>
+		      <th scope="col">NO</th>
+			  <th scope="col">STAT</th>
+		      <th scope="col">TRS ID</th>
+		      <th scope="col">REG NO</th>
+		      <th scope="col">CLASS ID</th>
+		      <th scope="col">RATE</th>
+		      <th scope="col">AMOUNT</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		      {%- macro format_price(price, thousand_separator=',', decimal_separator='.', decimal_places=0) -%}
+				{%- set price_as_string = price | string -%}
+				{%- set price_split = price_as_string.split('.') -%}
+				{%- set price_integer = price_split[0] -%}
+				{%- if price_split | count > 1 -%}
+				{%- set price_fraction = price_split[1] -%}
+				{%- if price_fraction | length < decimal_places -%}
+				{%- set price_fraction = price_fraction.ljust(decimal_places, '0') -%} 
+				{%- else -%}
+				{%- set price_fraction = price_fraction[:decimal_places] -%}
+				{%- endif -%}
+				{%- else -%}
+				{%- set price_fraction = '' -%}
+				{%- endif -%}
+				{%- set formatted_price_integer = price_integer | reverse | batch(3) | map('join', '') | join(thousand_separator) | reverse -%}
+				{%- if price_fraction != '' -%}
+				{%- set formatted_price = formatted_price_integer ~ decimal_separator ~ price_fraction -%}
+				{%- else -%}
+				{%- set formatted_price = formatted_price_integer-%}
+				{%- endif -%}
+				{{- formatted_price -}} {%- endmacro -%}
+		      
+			  {% for data in aTrs %}
+			  <tr>
+			    <td> {{loop.index}} </td>
+			    <td> {{data[0]}} </td>
+                <td> {{data[1]}} </td>
+			    <td> {{data[2]}} </td>
+			    <td> {{data[3]}} </td>
+			    <td> {{data[4]}} </td>
+			    <td> {{data[5]}} </td>
+			  </tr>
+			  {% endfor %}
+		  </tbody>
+		</table>
+	</div>
+
+{% endblock %}	
+	
