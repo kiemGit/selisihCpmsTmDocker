@@ -9,7 +9,12 @@
 
 # install app manual from github
 <ol>
-  <li>install mariadb from another pc, username with config { mysql_host: '192.168.0.42', mysql_user: 'hakim', mysql_password: 'sap123ok', mysql_db: 'trs' }</li>
+  <li>install mariadb from another pc, username with config { mysql_host: '192.168.0.42', mysql_user: 'hakim', mysql_password: 'sap123ok', mysql_db: 'trs' } // according with [db.yaml] file</li>
+  <li>$ install git</li>
+  <li>$ cd c:/data</li>
+  <li>$ mkdir test</li>
+  <li>$ cd test</li>
+  <li>$ git init</li>
   <li>$ git clone https://github.com/kiemGit/selisihCpmsTmDocker.git</li>
   <li>$ docker build --tag selisihpy .  // build docker image from dockerfile</li>
   <li>$ docker run -p 5000:5000 selisihpy // create docker containers</li>
@@ -20,6 +25,9 @@
 # install app from dockerhub
 <ol>
   <li>install mariadb from another pc, username with config { mysql_host: '192.168.0.42', mysql_user: 'hakim', mysql_password: 'sap123ok', mysql_db: 'trs' }</li>
+  <li>$ cd c:/data</li>
+  <li>$ mkdir test</li>
+  <li>$ cd test</li>
   <li>$ docker pull hakimrevlim/selisih_cpms_tm:v1</li>
   <li>$ docker run -p 5000:5000 hakimrevlim/selisih_cpms_tm:v1</li>
   <li>$ docker start [container_id], ex [ docker start 4f53e34dee61 ] // start docker container</li>
